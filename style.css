@@ -51,12 +51,12 @@ a {
   font-size: 20px;
   text-decoration: none;
 }
-body {
-  font-size: 20px; /* Adjust this size as needed */
-}
 .logo {
   width: 80px;
   height: 80px;
   margin: 10px;
   border-radius: 50%;
+}
+body {
+  font-size: 20px;
 }
