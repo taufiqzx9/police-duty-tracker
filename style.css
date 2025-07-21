@@ -57,6 +57,11 @@ a {
   margin: 10px;
   border-radius: 50%;
 }
-body {
-    font-size: 20px;
+table {
+  font-size: 18px;
+}
+
+th, td {
+  font-size: 18px;
+  padding: 10px;
 }
