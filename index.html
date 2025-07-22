@@ -7,7 +7,7 @@
  <style>
   body {
     font-family: 'Segoe UI', sans-serif;
-    background: url('loginbackground.jpg') no-repeat center center fixed;
+    background: url('loginbackground.png') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -52,19 +52,38 @@
     .login-box button:hover {
       background-color: #0056b3;
     }
-  </style>
+   .extra-links {
+    margin-top: 20px;
+  }
+
+  .extra-links a {
+    display: block;
+    color: #004080;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 4px 0;
+  }
+
+  .extra-links a:hover {
+    text-decoration: underline;
+    color: #0066cc;
+  }
+</style>
 </head>
 <body>
 
   <div class="login-box">
-    <h2>Police Login</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+  <h2>Police Login</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+
   <div class="extra-links">
-    <a href="https://puneruralpolice.gov.in/" target="_blank">🔗 पुणे ग्रामीण पोलीस अधिकृत संकेतस्थळ</a>
-    <a href="https://puneruralpolice.gov.in/contact-us" target="_blank">📞 संपर्क करा</a>
+    <a href="https://punegraminpolice.gov.in/" target="_blank">🔗 पुणे ग्रामीण पोलीस अधिकृत संकेतस्थळ</a>
+    <a href="https://punegraminpolice.gov.in/contact-us" target="_blank">📞 संपर्क करा</a>
   </div>
+    
+</div>
   <script>
     function login() {
       const user = document.getElementById('username').value;
