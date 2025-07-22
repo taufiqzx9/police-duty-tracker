@@ -2,53 +2,82 @@
 <html lang="mr">
 <head>
   <meta charset="UTF-8">
-  <title>Group Chat - Police Duty Tracker</title>
+  <title>Police Group Chat</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #e0f2ff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: Arial;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .chat-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
       padding: 20px;
     }
-    #chatBox {
-      width: 90%;
-      max-width: 600px;
+
+    .messages {
       height: 400px;
-      border: 2px solid #007bff;
-      border-radius: 10px;
-      padding: 10px;
       overflow-y: scroll;
-      background: #fff;
-    }
-    #messageInput {
-      width: 80%;
+      border: 1px solid #ccc;
       padding: 10px;
-      margin-top: 10px;
+      margin-bottom: 15px;
     }
-    #sendBtn {
+
+    .message {
+      margin: 5px 0;
+      padding: 8px 12px;
+      background: #e1f5fe;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+
+    .input-area {
+      display: flex;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px 0 0 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
       padding: 10px 20px;
+      border: none;
       background: #007bff;
       color: white;
-      border: none;
-      border-radius: 5px;
+      border-radius: 0 8px 8px 0;
       cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
+  <div class="chat-container">
+    <h2>👮 पोलिस ग्रुप चॅट</h2>
+    <div class="messages" id="messages"></div>
+    <div class="input-area">
+      <input type="text" id="msgInput" placeholder="संदेश लिहा...">
+      <button onclick="sendMessage()">पाठवा</button>
+    </div>
+  </div>
 
-<h2>👮 ग्रुप चॅट</h2>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
-<div id="chatBox"></div>
-<input type="text" id="messageInput" placeholder="आपला संदेश टाका..." />
-<button id="sendBtn">पाठवा</button>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-const firebaseConfig = {
+  <script>
+    // Your Firebase Config
+   const firebaseConfig = {
   apiKey: "AIzaSyCu8JMA4WFh7p6jnZamMIz41ijnzlZfKwA",
   authDomain: "policechatapp-c6e47.firebaseapp.com",
   projectId: "policechatapp-c6e47",
@@ -58,38 +87,30 @@ const firebaseConfig = {
 };
 
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-  const chatRef = ref(db, "groupChat");
-
-  const chatBox = document.getElementById("chatBox");
-  const messageInput = document.getElementById("messageInput");
-  const sendBtn = document.getElementById("sendBtn");
-
-  // Send message
-  sendBtn.onclick = () => {
-    const message = messageInput.value.trim();
-    if (message !== "") {
-      push(chatRef, { text: message, time: new Date().toLocaleTimeString() });
-      messageInput.value = "";
+    // Send message
+    function sendMessage() {
+      const msg = document.getElementById("msgInput").value;
+      if (msg.trim() !== "") {
+        db.ref("messages").push({
+          text: msg,
+          time: Date.now()
+        });
+        document.getElementById("msgInput").value = "";
+      }
     }
-  };
 
-  // Listen for new messages
-  onValue(chatRef, snapshot => {
-    chatBox.innerHTML = "";
-    snapshot.forEach(child => {
-      const msg = child.val();
-      const msgElem = document.createElement("div");
-      msgElem.textContent = `${msg.time}: ${msg.text}`;
-      chatBox.appendChild(msgElem);
+    // Load messages
+    const msgBox = document.getElementById("messages");
+    db.ref("messages").on("child_added", (data) => {
+      const div = document.createElement("div");
+      div.className = "message";
+      div.innerText = data.val().text;
+      msgBox.appendChild(div);
+      msgBox.scrollTop = msgBox.scrollHeight;
     });
-    chatBox.scrollTop = chatBox.scrollHeight;
-  });
-</script>
-
+  </script>
 </body>
 </html>
