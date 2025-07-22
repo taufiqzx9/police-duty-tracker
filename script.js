@@ -47,7 +47,13 @@ policeStations.forEach((entry, index) => {
     <td>${officer || "-"}</td>
     <td>${mobile || "-"}</td>
     <td>${mobile ? `<a href="tel:${mobile}" title="Call">📞</a>` : "-"}</td>
-    <td>${mobile ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">🟢</a>` : "-"}</td>
+   <td>${
+  mobile
+    ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
+         <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
+       </a>`
+    : "-"
+}</td>
     <td>${login}</td>
     <td>${password}</td>
   `;
