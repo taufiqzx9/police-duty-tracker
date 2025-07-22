@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <title>Group Chat - Police Duty Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f2ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    #chatBox {
+      width: 90%;
+      max-width: 600px;
+      height: 400px;
+      border: 2px solid #007bff;
+      border-radius: 10px;
+      padding: 10px;
+      overflow-y: scroll;
+      background: #fff;
+    }
+    #messageInput {
+      width: 80%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #sendBtn {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2>👮 ग्रुप चॅट</h2>
+
+<div id="chatBox"></div>
+<input type="text" id="messageInput" placeholder="आपला संदेश टाका..." />
+<button id="sendBtn">पाठवा</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyCu8JMA4WFh7p6jnZamMIz41ijnzlZfKwA",
+  authDomain: "policechatapp-c6e47.firebaseapp.com",
+  projectId: "policechatapp-c6e47",
+  storageBucket: "policechatapp-c6e47.firebasestorage.app",
+  messagingSenderId: "22448283537",
+  appId: "1:22448283537:web:1833cc6b2d3b35c26ec430"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const chatRef = ref(db, "groupChat");
+
+  const chatBox = document.getElementById("chatBox");
+  const messageInput = document.getElementById("messageInput");
+  const sendBtn = document.getElementById("sendBtn");
+
+  // Send message
+  sendBtn.onclick = () => {
+    const message = messageInput.value.trim();
+    if (message !== "") {
+      push(chatRef, { text: message, time: new Date().toLocaleTimeString() });
+      messageInput.value = "";
+    }
+  };
+
+  // Listen for new messages
+  onValue(chatRef, snapshot => {
+    chatBox.innerHTML = "";
+    snapshot.forEach(child => {
+      const msg = child.val();
+      const msgElem = document.createElement("div");
+      msgElem.textContent = `${msg.time}: ${msg.text}`;
+      chatBox.appendChild(msgElem);
+    });
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+</script>
+
+</body>
+</html>
