@@ -6,31 +6,39 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('images/bg.png') no-repeat center center fixed;
+      background-size: cover;
       font-family: 'Segoe UI', sans-serif;
-      
-  }
+    }
 
     .dashboard-box {
-      background-color: white;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 60px 80px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
     }
 
     .dashboard-box h2 {
       color: #003366;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      font-size: 32px;
     }
 
     .dashboard-box a {
       display: inline-block;
-      padding: 15px 30px;
+      padding: 18px 40px;
       background-color: #007bff;
       color: white;
       text-decoration: none;
-      font-size: 18px;
-      border-radius: 8px;
+      font-size: 22px;
+      border-radius: 10px;
       transition: background-color 0.3s;
     }
 
@@ -42,8 +50,8 @@
 <body>
 
   <div class="dashboard-box">
-    <h2>Welcome to the Police Duty Tracker</h2>
-    <a href="tracker.html">View Duty Officer Tracker</a>
+    <h2>पोलीस ड्युटी ट्रॅकरमध्ये आपले स्वागत आहे</h2>
+    <a href="tracker.html">Login</a>
   </div>
 
 </body>
