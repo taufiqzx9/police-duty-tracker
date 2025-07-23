@@ -91,7 +91,10 @@ policeStations.forEach((entry, index) => {
 
   tableBody.appendChild(tr);
 const creatorDiv = document.getElementById("creator");
-creatorDiv.innerText = "Created By: पो.कॉ.तौफिक.एन.शेख ";
+creatorDiv.innerHTML = `
+  Created By: पो.कॉ.तौफिक.एन.शेख <br>
+  वरिष्ठ पोलिस निरीक्षक: प्रवीण मोरे (जिल्हा विशेष शाखा)
+`;
 creatorDiv.style.color = "#003366";
 creatorDiv.style.fontSize = "25px";
 
