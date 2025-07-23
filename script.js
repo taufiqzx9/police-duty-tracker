@@ -69,9 +69,9 @@ const policeStations = [
 const tableBody = document.getElementById("stationTableBody");
 
 policeStations.forEach((entry, index) => {
-  const tr = document.createElement("tr");
+  const [station, officer, mobile, login, password, landline] = entry; // Include landline here
 
-  const [station, officer, mobile, login, password] = entry;
+  const tr = document.createElement("tr");
 
   tr.innerHTML = `
     <td>${index + 1}</td>
@@ -79,25 +79,28 @@ policeStations.forEach((entry, index) => {
     <td>${officer || "-"}</td>
     <td>${mobile || "-"}</td>
     <td>${mobile ? `<a href="tel:${mobile}" title="Call">📞</a>` : "-"}</td>
-   <td>${
-  mobile
-    ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
-         <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
-       </a>`
-    : "-"
-}</td>
+    <td>${
+      mobile
+        ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
+             <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
+           </a>`
+        : "-"
+    }</td>
     <td>${login}</td>
     <td>${password}</td>
+    <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
   `;
 
   tableBody.appendChild(tr);
+});
+
+// Move this *outside* the forEach so it's not repeated for each row:
 const creatorDiv = document.getElementById("creator");
 creatorDiv.innerHTML = `
   Created By: पो.कॉ.तौफिक.एन.शेख <br>
   Guidance: वरिष्ठ पोलिस निरीक्षक प्रवीण मोरे
-                  (जिल्हा विशेष शाखा)
+              (जिल्हा विशेष शाखा)
 `;
 creatorDiv.style.color = "#003366";
 creatorDiv.style.fontSize = "25px";
 
-});
