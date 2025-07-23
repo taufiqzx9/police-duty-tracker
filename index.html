@@ -4,17 +4,18 @@
   <meta charset="UTF-8">
   <title>Login - Police Duty Tracker</title>
   <link rel="stylesheet" href="style.css">
- <style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: url('loginbackground.png') no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('loginbackground.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
     .login-box {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 50px 60px;
@@ -22,6 +23,11 @@
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
       width: 400px;
       text-align: center;
+    }
+
+    .login-box .title-image {
+      max-width: 120px;
+      margin-bottom: 20px;
     }
 
     .login-box h2 {
@@ -47,43 +53,48 @@
       color: white;
       font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     .login-box button:hover {
       background-color: #0056b3;
     }
-   .extra-links {
-    margin-top: 20px;
-  }
 
-  .extra-links a {
-    display: block;
-    color: #004080;
-    font-size: 14px;
-    text-decoration: none;
-    margin: 4px 0;
-  }
+    .extra-links {
+      margin-top: 20px;
+    }
 
-  .extra-links a:hover {
-    text-decoration: underline;
-    color: #0066cc;
-  }
-</style>
+    .extra-links a {
+      display: block;
+      color: #004080;
+      font-size: 14px;
+      text-decoration: none;
+      margin: 4px 0;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+      color: #0066cc;
+    }
+  </style>
 </head>
 <body>
 
   <div class="login-box">
-  <h2>Police Login</h2>
-  <input type="text" id="username" placeholder="Username">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
+    <!-- 🔽 Title image added here -->
+    <img src="title-image.png" alt="Police Duty Tracker" class="title-image">
 
-  <div class="extra-links">
-    <a href="https://puneruralpolice.gov.in/" target="_blank">🔗 पुणे ग्रामीण पोलीस अधिकृत संकेतस्थळ</a>
-    <a href="https://puneruralpolice.gov.in/contact-us" target="_blank">📞 संपर्क करा</a>
+    <h2>Police Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+
+    <div class="extra-links">
+      <a href="https://puneruralpolice.gov.in/" target="_blank">🔗 पुणे ग्रामीण पोलीस अधिकृत संकेतस्थळ</a>
+      <a href="https://puneruralpolice.gov.in/contact-us" target="_blank">📞 संपर्क करा</a>
+    </div>
   </div>
-    
-</div>
+
   <script>
     function login() {
       const user = document.getElementById('username').value;
