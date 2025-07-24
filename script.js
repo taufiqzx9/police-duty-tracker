@@ -1,4 +1,7 @@
-const policeStations = [
+document.addEventListener("DOMContentLoaded", () => {
+  const tableBody = document.getElementById("stationTableBody");
+
+  const policeStations = [
   ["शिरूर", "रविंद्र काळे", "9960666441", "shirurps", "02138–222139"],
 ["शिक्रापूर", "अमोल दांडगे", "9552512690", "shikrapurps", "02137–286333"],
 ["रांजणगाव", "औटी", "9922745151", "ranjngavps", "02138–232139"],
@@ -66,8 +69,8 @@ const policeStations = [
 
 ];
 
-stations.forEach((stationInfo, index) => {
-    const [station, officer, mobile, username, password, landline] = stationInfo;
+ policeStations.forEach((stationInfo, index) => {
+    const [station, officer, mobile, username, landline] = stationInfo;
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -76,19 +79,26 @@ stations.forEach((stationInfo, index) => {
       <td>${officer || "-"}</td>
       <td>${mobile || "-"}</td>
       <td>${mobile ? `<a href="tel:${mobile}" title="Call">📞</a>` : "-"}</td>
-      <td>${
-        mobile
-          ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
-               <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
-             </a>`
-          : "-"
-      }</td>
-      <td>${username}<br><span style="font-size:12px;color:#555;">${password}</span></td>
+      <td>
+        ${
+          mobile
+            ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
+                 <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
+               </a>`
+            : "-"
+        }
+      </td>
+      <td>${username}</td>
       <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
     `;
     tableBody.appendChild(tr);
   });
 
+  const creatorDiv = document.getElementById("creator");
+  creatorDiv.innerText = "Created By: पो.कॉ. तौफिक एन. शेख | मार्गदर्शन: वरि.पो.नि. प्रविण मोरे";
+  creatorDiv.style.color = "#003366";
+  creatorDiv.style.fontSize = "20px";
+});
   const creatorDiv = document.getElementById("creator");
   creatorDiv.innerText = "Created By: पो.कॉ. तौफिक एन. शेख | मार्गदर्शन: वरि.पो.नि. प्रविण मोरे";
   creatorDiv.style.color = "#003366";
