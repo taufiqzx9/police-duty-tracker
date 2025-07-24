@@ -61,11 +61,9 @@ tr:hover {
 a {
   font-size: 20px;
   text-decoration: none;
+} /* ← This closing bracket was missing */
 
-
-
-
-  .officer-grid {
+.officer-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
@@ -81,6 +79,12 @@ a {
   border-radius: 8px;
   border: 2px solid white;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.officer p {
+  margin-top: 5px;
+  font-weight: bold;
+}
 }
 
 .officer p {
