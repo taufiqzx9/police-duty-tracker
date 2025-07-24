@@ -9,16 +9,16 @@
   <script src="script.js" defer></script>
 </head>
 <body>
- <header>
-  <div style="display: flex; align-items: center;">
-    <!-- SP Sir Photo to the very left -->
-    <img src="sp.jpg" alt="SP Sir Photo" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0; margin-right: 20px;">
-
-    <!-- Heading and logo in another div -->
-    <div style="display: flex; flex-direction: column; align-items: center; flex-grow: 1;">
-      <img src="logo.png" alt="Pune Gramin Logo" style="height: 80px; margin-bottom: 10px;">
-      <h1 style="margin: 0;">पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
-    </div>
+<header class="main-header">
+  <div class="header-left">
+    <img src="sp.jpg" class="sp-photo" alt="SP Sir">
+  </div>
+  <div class="header-center">
+    <img src="logo.png" class="logo" alt="Logo">
+    <h1>पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
+  </div>
+  <div class="header-right">
+    <button onclick="logout()" class="logout-btn">लॉगआउट</button>
   </div>
 </header>
   <main>
