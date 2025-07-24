@@ -7,7 +7,7 @@ const policeStations = [
 ["कामशेत", "नितीन कलसैत", "9850259911", "kamshetps", "02114–262440"],
 ["वडगाव मावळ", "चेतन कुंभार", "9881811589", "vadgmavalps", "02114–235333"],
 ["मंचर", "विशाल दळवी", "9561166625", "macharps", "02133–223159"],
-["खेड", "संतोष घोलप", "9823577333", "khedps", "khedps@123", "02135–222033"],
+["खेड", "संतोष घोलप", "9823577333", "khedps","02135–222033"],
 ["पारगाव", "गजानन ढाके", "9545696670", "pargavps",, ""],
 ["घोडगाव", "नलावडे", "8888050982", "ghodegavps", "02133–244133"],
 ["जुन्नर", "दादा पवाडे", "9404805304", "junnarps", " "02132–222033"],
@@ -73,26 +73,18 @@ policeStations.forEach((entry, index) => {
 
   const tr = document.createElement("tr");
 
-  tr.innerHTML = `
-    <td>${index + 1}</td>
-    <td>${station}</td>
-    <td>${officer || "-"}</td>
-    <td>${mobile || "-"}</td>
-    <td>${mobile ? `<a href="tel:${mobile}" title="Call">📞</a>` : "-"}</td>
-    <td>${
-      mobile
-        ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
-             <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
-           </a>`
-        : "-"
-    }</td>
-    <td>${login}</td>
-    <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
-  `;
-
-  tableBody.appendChild(tr);
-});
-
+ tr.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${station || "-"}</td>
+      <td>${officer || "-"}</td>
+      <td>${mobile || "-"}</td>
+      <td>${mobile ? `<a href="tel:${mobile}" title="Call">📞</a>` : "-"}</td>
+      <td>${mobile ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
+        <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
+      </a>` : "-"}</td>
+      <td>${login}</td>
+      <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
+    `;
 // Move this *outside* the forEach so it's not repeated for each row:
 const creatorDiv = document.getElementById("creator");
 creatorDiv.innerHTML = `
