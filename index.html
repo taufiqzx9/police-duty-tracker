@@ -25,10 +25,14 @@
       text-align: center;
     }
 
-    .login-box .title-image {
-      max-width: 120px;
-      margin-bottom: 20px;
-    }
+   .login-box .title-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto;
+  border-radius: 8px; /* optional: for smooth corners */
+}
+
 
     .login-box h2 {
       margin-bottom: 20px;
@@ -83,13 +87,7 @@
   <div class="login-box">
     <!-- 🔽 Title image added here -->
     <img src="title-image.jpeg" alt="Police Duty Tracker" class="title-image" style="width: 100%; height: auto;">
-      .title-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px; /* optional */
-    }
-
+      
     <h2>Police Login</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
