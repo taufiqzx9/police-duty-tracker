@@ -69,7 +69,7 @@ const policeStations = [
 const tableBody = document.getElementById("stationTableBody");
 
 policeStations.forEach((entry, index) => {
-  const [station, officer, mobile, login, password, landline] = entry; // Include landline here
+ const [station, officer, mobile, login, landline] = entry;
 
   const tr = document.createElement("tr");
 
