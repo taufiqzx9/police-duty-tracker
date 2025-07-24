@@ -2,65 +2,36 @@
 <html lang="mr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Police Duty Officer Tracker</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
+  <header>
+   <img src="logo.png" alt="Pune Gramin Logo" class="logo">
+    <h1>पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
+  </header>
 
-<header class="main-header" style="background-color: #003366; color: white; padding: 10px;">
-  <!-- Top Bar with Logout Only -->
-  <div class="top-bar" style="display: flex; justify-content: flex-end;">
-    <button onclick="logout()" class="logout-btn" style="padding: 10px 20px; font-size: 16px; background-color: white; color: #003366; border: none; border-radius: 5px; cursor: pointer;">
-      लॉगआउट
-    </button>
-  </div>
-
-  <!-- Header Content: SP photo, logo + title -->
-  <div class="header-content" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 10px;">
-    
-    <!-- SP Sir Photo -->
-    <div class="sp-photo-box" style="text-align: center; margin: 10px;">
-      <img src="sp.jpg" alt="SP Sir Photo" style="height: 130px; border-radius: 15px;"><br>
-      <div style="font-size: 12px; margin-top: 5px;">
-        <strong>Shree. Sandeep Singh Gill (I.P.S.)</strong><br>
-        Superintendent of Police, Pune Rural
-      </div>
-    </div>
-
-    <!-- Center Title with Logo -->
-    <div class="logo-title" style="display: flex; align-items: center; justify-content: center; flex: 1; gap: 15px;">
-      <img src="logo.png" alt="Logo" style="height: 80px;">
-      <h1 style="margin: 0; font-size: 24px;">पोलीस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
-    </div>
-  </div>
-</header>
-
-<main>
-  <div class="table-container" style="overflow-x: auto; margin: 20px;">
-    <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+  <main>
+    <table>
       <thead>
         <tr>
           <th>क्रमांक</th>
           <th>पोलीस स्टेशन</th>
           <th>ड्युटी ऑफिसर</th>
           <th>मोबाईल</th>
-          <th>कॉल</th>
-          <th>व्हाट्सअ‍ॅप</th>
-          <th>लॉगिन</th>
-          <th>लँडलाईन</th>
+          <th>Call</th>
+          <th>WhatsApp</th>
+          <th>Login</th>
+          <th>Password</th>
         </tr>
       </thead>
       <tbody id="stationTableBody">
-        <!-- Filled by JS -->
+        <!-- Rows will be filled by JS -->
       </tbody>
     </table>
-  </div>
-</main>
-
-<!-- Creator Name -->
+  </main>
+  <!-- Creator Name Section -->
 <div id="creator" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
-
 </body>
 </html>
