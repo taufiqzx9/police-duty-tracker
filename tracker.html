@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -9,24 +8,29 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+
 <header class="main-header">
-  <div class="top-bar">
+  <!-- Top Bar with App Title and Logout -->
+  <div class="top-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
     <h2 class="app-title">DsbDutyTracker</h2>
-    <button onclick="logout()" class="logout-btn">लॉगआउट</button>
+    <button onclick="logout()" class="logout-btn" style="padding: 10px 20px; font-size: 16px; background-color: #003366; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      लॉगआउट
+    </button>
   </div>
 
-  <div class="header-content">
-    <img src="sp.jpg" class="sp-photo" alt="SP Sir Photo">
-    
-    <div class="logo-title">
-      <img src="logo.png" class="logo" alt="Logo">
-      <h1>पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
+  <!-- Header Content with Photos -->
+  <div class="header-content" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+    <img src="sp.jpg" class="sp-photo" alt="SP Sir Photo" style="height: 100px; margin-right: 20px;">
+    <div class="logo-title" style="display: flex; flex-direction: column; align-items: center;">
+      <img src="logo.png" class="logo" alt="Logo" style="height: 80px;">
+      <h1 style="margin: 10px 0;">पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
     </div>
   </div>
 </header>
- <main>
-  <div class="table-container">
-    <table>
+
+<main>
+  <div class="table-container" style="overflow-x: auto; margin: 20px;">
+    <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
       <thead>
         <tr>
           <th>क्रमांक</th>
@@ -37,20 +41,17 @@
           <th>व्हाट्सअ‍ॅप</th>
           <th>लॉगिन</th>
           <th>लँडलाईन</th>
-          
         </tr>
       </thead>
       <tbody id="stationTableBody">
-        <!-- Rows will be filled by JS -->
+        <!-- Filled by JS -->
       </tbody>
     </table>
-       </div>
-     <button onclick="logout()" style="position: absolute; top: 20px; right: 20px; padding: 10px 20px; font-size: 16px; background-color: #003366; color: white; border: none; border-radius: 5px; cursor: pointer;">
-      लॉगआउट
-    </button>
-  </main>
+  </div>
+</main>
 
-  <!-- Creator Name Section -->
-  <div id="creator" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
+<!-- Creator Name -->
+<div id="creator" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
+
 </body>
-</html>  
+</html>
