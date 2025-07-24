@@ -5,69 +5,78 @@
   <title>Dashboard - Police Duty Tracker</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       height: 100vh;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
       background: url('login-background.png') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', sans-serif;
     }
 
-    /* SP Sir Photo Styling */
-    .sp-photo-container {
-      margin-top: 300px;
-      margin-bottom: 5px;
+    .main-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 20px;
     }
 
-    .sp-photo-container img {
-      width: 200px;
+    /* Photos Column */
+    .photo-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      gap: 20px;
+    }
+
+    .photo-column img {
+      max-width: 220px;
+      width: 100%;
       height: auto;
-      border-radius: 10px;
+      border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      border: 3px solid white;
+      border: 2px solid white;
     }
 
-    /* All Addl Photo Styling */
-    .alladd-photo-container {
-      margin-bottom: 5px;
-    }
-
-    .alladd-photo-container img {
-      width: 500px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      border: 3px solid white;
-    }
-
-    /* Dashboard Box Styling */
+    /* Dashboard Box */
     .dashboard-box {
       background-color: rgba(255, 255, 255, 0.95);
-      padding: 40px 60px;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-      text-align: center;
+      padding: 40px 50px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .dashboard-box h2 {
       color: #003366;
-      margin-bottom: 25px;
-      font-size: 28px;
+      font-size: 26px;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
     .dashboard-box a {
       display: inline-block;
-      padding: 15px 35px;
+      padding: 14px 30px;
       background-color: #007bff;
       color: white;
       text-decoration: none;
-      font-size: 20px;
-      border-radius: 8px;
-      transition: background-color 0.3s;
+      font-size: 18px;
+      border-radius: 6px;
+      margin: 10px 0;
+      transition: 0.3s;
     }
 
     .dashboard-box a:hover {
@@ -77,22 +86,21 @@
 </head>
 <body>
 
-  <!-- SP Sir Photo -->
-  <div class="sp-photo-container">
-    <img src="sp.jpg" alt="SP Sir">
-  </div>
+  <div class="main-container">
 
-  <!-- All Addl Photo -->
-  <div class="alladd-photo-container">
-    <img src="alladd.png" alt="Addl SP">
-  </div>
+    <!-- Photos -->
+    <div class="photo-column">
+      <img src="sp.jpg" alt="SP Sir Photo">
+      <img src="alladd.png" alt="Addl SP Photo">
+    </div>
 
-  <!-- Dashboard Box -->
-  <div class="dashboard-box">
-    <h2>पोलीस ड्युटी ट्रॅकरमध्ये आपले स्वागत आहे</h2>
-    <a href="tracker.html">Login</a>
-    <br><br>
-    <a href="chat.html">👮 ग्रुप चॅटमध्ये जा</a>
+    <!-- Welcome Box -->
+    <div class="dashboard-box">
+      <h2>पोलीस ड्युटी ट्रॅकरमध्ये आपले स्वागत आहे</h2>
+      <a href="tracker.html">Login</a>
+      <a href="chat.html">👮 ग्रुप चॅटमध्ये जा</a>
+    </div>
+
   </div>
 
 </body>
