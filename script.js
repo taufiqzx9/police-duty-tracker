@@ -104,10 +104,4 @@ document.addEventListener("DOMContentLoaded", () => {
   creatorDiv.style.color = "#003366";
   creatorDiv.style.fontSize = "20px";
 
-<script>
-  function logout() {
-    // Optional: clear login data or session if used
-    // Redirect to login page
-    window.location.href = "index.html"; // change if your login page has a different name
-  }
-</script>
+
