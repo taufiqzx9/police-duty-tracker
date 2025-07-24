@@ -66,33 +66,31 @@ const policeStations = [
 
 ];
 
-const tableBody = document.getElementById("stationTableBody");
+stations.forEach((stationInfo, index) => {
+    const [station, officer, mobile, username, password, landline] = stationInfo;
 
-policeStations.forEach((entry, index) => {
-  const [station, officer, mobile, login, landline] = entry;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${station}</td>
+      <td>${officer || "-"}</td>
+      <td>${mobile || "-"}</td>
+      <td>${mobile ? `<a href="tel:${mobile}" title="Call">📞</a>` : "-"}</td>
+      <td>${
+        mobile
+          ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
+               <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
+             </a>`
+          : "-"
+      }</td>
+      <td>${username}<br><span style="font-size:12px;color:#555;">${password}</span></td>
+      <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
 
-  const tr = document.createElement("tr");
-  tr.innerHTML = `
-    <td>${index + 1}</td>
-    <td>${station || "-"}</td>
-    <td>${officer || "-"}</td>
-    <td>${mobile || "-"}</td>
-    <td>${mobile ? `<a href="tel:${mobile}">📞</a>` : "-"}</td>
-    <td>${mobile ? `<a href="https://wa.me/91${mobile}" target="_blank">
-      <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
-    </a>` : "-"}</td>
-    <td>${login}</td>
-    <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
-  `;
-
-  tableBody.appendChild(tr);
+  const creatorDiv = document.getElementById("creator");
+  creatorDiv.innerText = "Created By: पो.कॉ. तौफिक एन. शेख | मार्गदर्शन: वरि.पो.नि. प्रविण मोरे";
+  creatorDiv.style.color = "#003366";
+  creatorDiv.style.fontSize = "20px";
 });
-const creatorDiv = document.getElementById("creator");
-creatorDiv.innerHTML = `
-  Created By: पो.कॉ.तौफिक.एन.शेख <br>
-  Guidance: वरिष्ठ पोलिस निरीक्षक प्रवीण मोरे
-              (जिल्हा विशेष शाखा)
-`;
-creatorDiv.style.color = "#003366";
-creatorDiv.style.fontSize = "25px";
-
