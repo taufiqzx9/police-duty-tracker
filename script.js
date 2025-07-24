@@ -69,23 +69,24 @@ const policeStations = [
 const tableBody = document.getElementById("stationTableBody");
 
 policeStations.forEach((entry, index) => {
- const [station, officer, mobile, login, landline] = entry;
+  const [station, officer, mobile, login, landline] = entry;
 
   const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${station || "-"}</td>
+    <td>${officer || "-"}</td>
+    <td>${mobile || "-"}</td>
+    <td>${mobile ? `<a href="tel:${mobile}">📞</a>` : "-"}</td>
+    <td>${mobile ? `<a href="https://wa.me/91${mobile}" target="_blank">
+      <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
+    </a>` : "-"}</td>
+    <td>${login}</td>
+    <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
+  `;
 
- tr.innerHTML = `
-      <td>${index + 1}</td>
-      <td>${station || "-"}</td>
-      <td>${officer || "-"}</td>
-      <td>${mobile || "-"}</td>
-      <td>${mobile ? `<a href="tel:${mobile}" title="Call">📞</a>` : "-"}</td>
-      <td>${mobile ? `<a href="https://wa.me/91${mobile}" target="_blank" title="WhatsApp">
-        <img src="watsappicon.png" alt="WhatsApp" style="width:28px; height:28px;">
-      </a>` : "-"}</td>
-      <td>${login}</td>
-      <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
-    `;
-// Move this *outside* the forEach so it's not repeated for each row:
+  tableBody.appendChild(tr);
+});
 const creatorDiv = document.getElementById("creator");
 creatorDiv.innerHTML = `
   Created By: पो.कॉ.तौफिक.एन.शेख <br>
