@@ -52,10 +52,13 @@ a {
   text-decoration: none;
 }
 .logo {
-  width: 80px;
-  height: 80px;
-  margin: 10px;
-  border-radius: 50%;
+.logo {
+  width: 100px;      /* or adjust size as needed */
+  height: 100px;
+  object-fit: cover; /* ensures the image fills the box without distortion */
+  border-radius: 0;  /* ensures it's square, not circular */
+  display: block;
+  margin: 10px auto;
 }
 body {
     font-size: 20px;
