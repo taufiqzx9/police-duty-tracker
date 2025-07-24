@@ -1,5 +1,6 @@
 function logout() {
-  window.location.href = "index.html"; // Or "login.html"
+  // Optional: clear sessionStorage or localStorage here
+  window.location.href = "index.html"; // or your login page
 }
 document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.getElementById("stationTableBody");
