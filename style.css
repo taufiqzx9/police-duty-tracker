@@ -60,3 +60,10 @@ a {
 body {
     font-size: 20px;
 }
+
+.title-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* optional */
+}
