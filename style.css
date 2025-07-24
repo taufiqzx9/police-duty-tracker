@@ -1,15 +1,19 @@
-body {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', sans-serif;
   background-color: #f0f8ff;
   color: #333;
-  margin: 0;
-  padding: 0;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
   background-color: #003366;
   color: white;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -18,40 +22,43 @@ header {
 }
 
 .logo {
-  width: 80px;
-  height: 80px;
-  margin: 10px;
+  width: 100px;
+  height: 100px;
+  margin: 15px;
   border-radius: 50%;
 }
 
 h1 {
   display: inline;
-  font-size: 24px;
-  margin-left: 10px;
+  font-size: 32px;
+  margin-left: 15px;
 }
 
 main {
-  padding: 20px;
-  overflow-x: auto; /* Ensures mobile responsiveness */
+  flex: 1; /* Ensures main fills the remaining height */
+  padding: 30px;
+  overflow: auto; /* Allows scrolling if content is tall */
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  min-width: 800px; /* Forces horizontal scroll if too narrow */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  min-width: 1000px;
 }
 
 th, td {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px;
   text-align: center;
+  font-size: 18px;
 }
 
 th {
   background-color: #0077cc;
   color: white;
+  font-size: 20px;
 }
 
 tr:hover {
@@ -59,14 +66,14 @@ tr:hover {
 }
 
 a {
-  font-size: 20px;
+  font-size: 22px;
   text-decoration: none;
-} /* ← This closing bracket was missing */
+}
 
 .officer-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
 }
 
 .officer {
@@ -75,18 +82,14 @@ a {
 }
 
 .officer img {
-  max-width: 100px;
-  border-radius: 8px;
-  border: 2px solid white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  max-width: 140px;
+  border-radius: 10px;
+  border: 3px solid white;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
 }
 
 .officer p {
-  margin-top: 5px;
+  margin-top: 8px;
   font-weight: bold;
-}
-
-.officer p {
-  margin-top: 5px;
-  font-weight: bold;
+  font-size: 16px;
 }
