@@ -9,21 +9,30 @@
 </head>
 <body>
 
-<header class="main-header">
-  <!-- Top Bar with App Title and Logout -->
-  <div class="top-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
-    <h2 class="app-title">DsbDutyTracker</h2>
-    <button onclick="logout()" class="logout-btn" style="padding: 10px 20px; font-size: 16px; background-color: #003366; color: white; border: none; border-radius: 5px; cursor: pointer;">
+<header class="main-header" style="background-color: #003366; color: white; padding: 10px;">
+  <!-- Top Bar with Logout Only -->
+  <div class="top-bar" style="display: flex; justify-content: flex-end;">
+    <button onclick="logout()" class="logout-btn" style="padding: 10px 20px; font-size: 16px; background-color: white; color: #003366; border: none; border-radius: 5px; cursor: pointer;">
       लॉगआउट
     </button>
   </div>
 
-  <!-- Header Content with Photos -->
-  <div class="header-content" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
-    <img src="sp.jpg" class="sp-photo" alt="SP Sir Photo" style="height: 100px; margin-right: 20px;">
-    <div class="logo-title" style="display: flex; flex-direction: column; align-items: center;">
-      <img src="logo.png" class="logo" alt="Logo" style="height: 80px;">
-      <h1 style="margin: 10px 0;">पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
+  <!-- Header Content: SP photo, logo + title -->
+  <div class="header-content" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 10px;">
+    
+    <!-- SP Sir Photo -->
+    <div class="sp-photo-box" style="text-align: center; margin: 10px;">
+      <img src="sp.jpg" alt="SP Sir Photo" style="height: 130px; border-radius: 15px;"><br>
+      <div style="font-size: 12px; margin-top: 5px;">
+        <strong>Shree. Sandeep Singh Gill (I.P.S.)</strong><br>
+        Superintendent of Police, Pune Rural
+      </div>
+    </div>
+
+    <!-- Center Title with Logo -->
+    <div class="logo-title" style="display: flex; align-items: center; justify-content: center; flex: 1; gap: 15px;">
+      <img src="logo.png" alt="Logo" style="height: 80px;">
+      <h1 style="margin: 0; font-size: 24px;">पोलीस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
     </div>
   </div>
 </header>
