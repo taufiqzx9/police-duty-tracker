@@ -23,40 +23,64 @@
 
     .main-container {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 30px;
-      padding: 20px;
+      padding: 30px 20px;
     }
 
-    /* Photos Column */
-    .photo-column {
+    .sp-photo {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 3px solid white;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+      margin-bottom: 10px;
+    }
+
+    .officer-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      max-width: 600px;
+    }
+
+    .officer {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-      gap: 20px;
+      align-items: center;
+      width: 120px;
+      text-align: center;
     }
 
-    .photo-column img {
-      max-width: 220px;
+    .officer img {
       width: 100%;
       height: auto;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
       border: 2px solid white;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      margin-bottom: 6px;
     }
 
-    /* Dashboard Box */
+    .officer p {
+      color: #fff;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 6px;
+      border-radius: 6px;
+    }
+
     .dashboard-box {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 40px 50px;
       border-radius: 16px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      width: 400px;
-      min-height: 400px;
+      width: 600px;
+      max-width: 90vw;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
     }
 
@@ -88,38 +112,35 @@
 
   <div class="main-container">
 
-    <!-- Photos -->
-    <div class="photo-column">
-      <img src="sp.jpg" alt="SP Sir Photo">
-      <div class="officer-grid">
-  <div class="officer">
-    <img src="chopde.png" alt="DYSP 1">
-    <p>Shri. Ramesh Chopade
-Additional SP, (Pune Division)</p>
-  </div>
-  <div class="officer">
-    <img src="birajdar.png" alt="DYSP 2">
-    <p>Shri. Ganesh Biradar
-Additional SP, (Baramati Division)</p>
-  </div>
-  <div class="officer">
-    <img src="rathod.png" alt="DYSP 3">
-    <p>Shri. Sudarshan Rathod
-Deputy SP, (Baramati Division)</p>
-  </div>
-  <div class="officer">
-    <img src="shinde.png" alt="DYSP 4">
-    <p>Shri. Dilip Shinde
-Deputy SP, (Home)</p>
-  </div>
-</div>
+    <!-- SP Sir Photo -->
+    <img src="sp.jpg" alt="SP Sir Photo" class="sp-photo">
+
+    <!-- Other Officers -->
+    <div class="officer-row">
+      <div class="officer">
+        <img src="chopde.png" alt="DYSP 1">
+        <p>श्री. रमेश चोपडे<br>अति. पोलीस अधीक्षक (पुणे)</p>
+      </div>
+      <div class="officer">
+        <img src="birajdar.png" alt="DYSP 2">
+        <p>श्री. गणेश बिराजदार<br>अति. पोलीस अधीक्षक (बारामती)</p>
+      </div>
+      <div class="officer">
+        <img src="rathod.png" alt="DYSP 3">
+        <p>श्री. सुधर्शन राठोड<br>उप. पोलीस अधीक्षक (बारामती)</p>
+      </div>
+      <div class="officer">
+        <img src="shinde.png" alt="DYSP 4">
+        <p>श्री. दिलीप शिंदे<br>उप. पोलीस अधीक्षक (गृह)</p>
+      </div>
     </div>
 
-    <!-- Welcome Box -->
+    <!-- Dashboard Box -->
     <div class="dashboard-box">
       <h2>पोलीस ड्युटी ट्रॅकरमध्ये आपले स्वागत आहे</h2>
-      <a href="tracker.html">Login</a>
+      <a href="tracker.html">🔐 Login</a>
       <a href="chat.html">👮 ग्रुप चॅटमध्ये जा</a>
+<a href="https://puneruralpolice.gov.in" target="_blank">🌐 पुणे ग्रामीण पोलीस संकेतस्थळ</a>
     </div>
 
   </div>
