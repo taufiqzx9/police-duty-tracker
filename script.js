@@ -67,6 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 ["SDPO बारामती कार्यालय", "अतुल जाधव", "8668510084", "dybaramatido", ""]
 
 ];
+  function logout() {
+  window.location.href = "index.html"; // Or "login.html"
+}
 
  policeStations.forEach((stationInfo, index) => {
     const [station, officer, mobile, username, landline] = stationInfo;
