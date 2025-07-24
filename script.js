@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.getElementById("stationTableBody");
-
   const policeStations = [
   ["शिरूर", "रविंद्र काळे", "9960666441", "shirurps", "02138–222139"],
 ["शिक्रापूर", "अमोल दांडगे", "9552512690", "shikrapurps", "02137–286333"],
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ["अप्पर पोलीस अधिक्षक बारामती", "तांडुलकर", "9823545599", "addlbar", ""],
 ["जिल्हा विषेष शाखा", "पल्लवी गायकवाड", "9881027733", "distdsb", ""],
 ["सुरक्षा शाखा", "सुनीता मोरे", "9503091298", "surksha", ""],
-["एफ.आर.ओ", "शिल्पा शिंदे", "7775098222", "frobr", ""],
+["एफ.आर.ओ", "शिल्पा शिंदे", "7775098222", "frobr", "frobr@123", ""],
 ["पोलीस अधिक्षक वाचक", "असीम बेग", "8087011618", "readerbr",""],
 ["स्थानिक गुन्हे शाखा", "पासलकर", "9923203187", "Icbbr", ""],
 ["महीला कक्ष", "सीमा जगताप", "8208002037", "womencell", ""],
@@ -95,8 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const creatorDiv = document.getElementById("creator");
-  creatorDiv.innerText = "Created By: पो.कॉ. तौफिक एन. शेख | मार्गदर्शन: वरि.पो.नि. प्रविण मोरे";
+  creatorDiv.innerText =
+    "Created By: पो.कॉ. तौफिक एन. शेख | मार्गदर्शन: वरि.पो.नि. प्रविण मोरे";
   creatorDiv.style.color = "#003366";
   creatorDiv.style.fontSize = "20px";
-
-
