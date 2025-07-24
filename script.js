@@ -98,3 +98,4 @@ document.addEventListener("DOMContentLoaded", () => {
     "Created By: पो.कॉ. तौफिक एन. शेख | मार्गदर्शन: वरि.पो.नि. प्रविण मोरे";
   creatorDiv.style.color = "#003366";
   creatorDiv.style.fontSize = "20px";
+  });
