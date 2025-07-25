@@ -98,13 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tableBody.appendChild(tr);
   });
  });
- const creatorDiv = document.getElementById("creator");
-creatorDiv.innerHTML = `
-  <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-    <img src="more.png" alt="प्रविण मोरे" style="width: 60px; height: auto; border-radius: 8px; border: 2px solid #003366; box-shadow: 0 0 6px rgba(0,0,0,0.2);">
-    <span style="color: #003366; font-size: 20px;">
-      Created By: पो.कॉ. तौफिक एन. शेख <br>
-      मार्गदर्शन: वरि.पो.नि. प्रविण मोरे
-    </span>
-  </div>
+const creatorDiv = document.getElementById("creator");
+  creatorDiv.innerText =
+    "Created By: पो.कॉ. तौफिक एन. शेख | मार्गदर्शन: वरि.पो.नि. प्रविण मोरे";
+  creatorDiv.style.color = "#003366";
+  creatorDiv.style.fontSize = "20px";
  
