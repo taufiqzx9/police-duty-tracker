@@ -124,10 +124,10 @@ body {
 }
 
 #tableWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  overflow-x: auto; /* Enables horizontal scroll if table is too wide */
+  max-height: 500px; /* Set vertical limit */
+  overflow-y: auto; /* Enables vertical scroll if table is too tall */
+  display: block;
   margin-top: 30px;
 }
 
