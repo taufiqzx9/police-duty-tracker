@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             : "-"
         }
       </td>
-      <td>${username}</td>
+      <td></td> <!-- गोपनिय अंमलदार: intentionally blank -->
       <td>${landline ? `<a href="tel:${landline}">${landline}</a>` : "-"}</td>
     `;
     tableBody.appendChild(tr);
