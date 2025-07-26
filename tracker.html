@@ -7,33 +7,38 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-   <img src="logo.png" alt="Pune Gramin Logo" class="logo">
-    <h1>पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
-  </header>
+  <header style="text-align: center;">
+  <img src="logo.png" alt="Pune Gramin Logo" class="logo">
+  <h1>पोलिस ठाणे ड्युटी ऑफिसर उपस्थिती</h1>
+</header>
 
   <main>
+  <div id="tableWrapper">
     <table>
       <thead>
         <tr>
-          <th>क्रमांक</th>
+          <th>अ.क्र</th>
           <th>पोलीस स्टेशन</th>
-          <th>ड्युटी ऑफिसर</th>
-          <th>मोबाईल</th>
-          <th>कॉल करा</th>
-          <th>व्हॉट्सॲप</th>
-          <th>गोपनिय अंमलदार</th>
-          <th>गोपनिय अंमलदार संपर्क</th>
           <th>लँडलाईन</th>
-      
         </tr>
       </thead>
-      <tbody id="stationTableBody">
-        <!-- Rows will be filled by JS -->
-      </tbody>
+      <tbody id="stationTableBody"></tbody>
     </table>
-  </main>
-  <!-- Creator Name Section -->
-<div id="creator" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
+  </div>
+</main>
+
+  <!-- Modal Popup -->
+  <div id="popupModal" class="modal">
+    <div class="modal-content">
+      <span class="closeBtn">&times;</span>
+      <h2 id="modalStation"></h2>
+      <p><strong>ड्युटी ऑफिसर:</strong> <span id="modalOfficer"></span></p>
+      <p><strong>मोबाईल:</strong> <span id="modalMobile"></span></p>
+      <p><strong>गोपनिय अंमलदार:</strong> <span id="modalSecretOfficer">-</span></p>
+      <p><strong>गोपनिय अंमलदार संपर्क:</strong> <span id="modalSecretContact">-</span></p>
+    </div>
+  </div>
+
+  <div id="creator"></div>
 </body>
 </html>
