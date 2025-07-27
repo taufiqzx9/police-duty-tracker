@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <title>Police Duty Officer Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f8ff;
+      color: #333;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #0077cc;
+      color: white;
+    }
+    .clickable {
+      color: #003366;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 95%;
+      max-width: 1000px;
+      box-shadow: 0 0 10px #333;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+      color: #003366;
+    }
+    .closeBtn {
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+    .btn {
+      padding: 6px 8px;
+      margin: 4px 2px;
+      text-decoration: none;
+      border-radius: 8px;
+      color: white;
+    }
+    
+.call-btn,
+.whatsapp-btn {
+  padding: 4px 8px; /* Smaller padding */
+  font-size: 12px;  /* Smaller text */
+  border-radius: 6px;
+  margin: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.call-btn {
+  background-color: green;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+}
+
+
+
+
+
+
+
+    .info-block {
+      margin-bottom: 15px;
+    }
+    .info-block span {
+      font-weight: bold;
+      color: #003366;
+    }
+.logout-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.logout-btn:hover {
+  background-color: #a80000;
+}
+  </style>
+</head>
+<body>
+
+<header>
+  पुणे ग्रामीण पोलीस युनिट्स
+  
+<button class="logout-btn" onclick="window.location.href='login.html'">Logout</button>
+</header>
+
+<table>
+  <thead>
+    <tr>
+      <th>अ.क्र.</th>
+      <th>पोलीस स्टेशन</th>
+      <th>लँडलाइन</th>
+       <th>ईमेल-आयडी</th>
+    </tr>
+  </thead>
+  <tbody id="stationTableBody"></tbody>
+</table>
+
+<div id="popupModal" class="modal">
+  <div class="modal-content">
+    <span class="closeBtn">&times;</span>
+    <h3 id="modalStation">पोलीस स्टेशन</h3>
+
+    <div class="info-block">
+      <span>प्रभारी अधिकारी:</span> <span id="modalInChargeOfficer"></span><br>
+      <span>मोबाइल:</span> <span id="modalInChargeContact"></span><br>
+      <div id="inChargeButtons"></div>
+    </div>
+
+    <div class="info-block">
+      <span>ड्युटी ऑफिसर:</span> <span id="modalOfficer"></span><br>
+      <span>मोबाइल:</span> <span id="modalMobile"></span><br>
+      <div id="dutyButtons"></div>
+    </div>
+
+    <div class="info-block">
+      <span>गोपनीय अधिकारी:</span> <span id="modalSecretOfficer"></span><br>
+      <span>मोबाइल:</span> <span id="modalSecretContact"></span><br>
+      <div id="secretButtons"></div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    const policeStations = [
+ { station: "अप्पर पोलीस अधीक्षक बारामती", inCharge: "श्री गणेश बिरादार", inChargeContact: "8275453664", dutyOfficer: "तांदुळकर", dutyMobile: "9823545599", landline: " Not Availavle", secret: "", secretMobile: "",email: "sp.pune.r@mahapolice.gov.in" },
+  { station: "SDPO बारामती", inCharge: "मा श्री सुदर्शन राठोड", inChargeContact: "9029633452", dutyOfficer: "अतुल जाधव", dutyMobile: "8668510084", landline: "", secret: "", secretMobile: "" ,email: "sdpo.baramati@mahapolice.gov.in"},
+  { station: "बारामती शहर", inCharge: "पोनि विलास नाळे", inChargeContact: "9552517284", dutyOfficer: "भगवान दुधे", dutyMobile: "9921204135", landline: "02112224333", email: "ps.baramatirural@mahapolice.gov.in", secret: "", secretMobile: "",email: "pibaramaticity.pnr@mahapolice.gov.in" },
+  { station: "बारामती ट्राफीक", inCharge: "पोनि चंद्रशेखर यादव", inChargeContact: "9923630652", dutyOfficer: "अजिंक्य कदम", dutyMobile: "9667900100", landline: "", secret: "", secretMobile: "",email: "" },
+  { station: "बारामती तालुका", inCharge: "म पो नि वैशाली पाटील", inChargeContact: "9823751199", dutyOfficer: "ओंकार पवार", dutyMobile: "7083169390", landline: "02112243433", secret: "", secretMobile: "" ,email: "pibaramatitaluka.pnr@mahapolice.gov.in"},
+  { station: "माळेगाव", inCharge: "सपोनि. सचिन लोखंडे", inChargeContact: "9823622029", dutyOfficer: "नितीन कांबळे", dutyMobile: "9960252878", landline: "02112254318", secret: " ज्ञानेश्वर पांडुरंग सानप हुद्दा= पोलीस नाईक 758", secretMobile:"9623333500",email: "pi-malegaon.pnr@mahapolice.gov.in" },
+  { station: "वडगाव निबाळकर", inCharge: "सपोनि. सचिन काळे", inChargeContact: "9881731121", dutyOfficer: "पोपट नाळे", dutyMobile: "9689898702", landline: "02112272133", secret: "", secretMobile: "",email: "pivadgnnimbalkar.pnr@mahapolice.gov.in" },
+  { station: "वालचंदनगर", inCharge: "सपोनि. राजकुमार डुणगे", inChargeContact: "8605022022", dutyOfficer: "अमोल चिटकोटे", dutyMobile: "7447420303", landline: "02118272350", secret: "", secretMobile: "" ,email: "piwalchandnagar.pnr@mahapolice.gov.in"},
+  { station: "इंदापुर", inCharge: "पोनि सूर्यकांत कोकणे", inChargeContact: "9604790009", dutyOfficer: "अकबर शेख", dutyMobile: "9922145218", landline: "02118223333", secret: "", secretMobile: "" ,email: "piindapur.pnr@mahapolice.gov.in"},
+  { station: "भिगवण", inCharge: "सपोनि. विनोद महागडे", inChargeContact: "9422150050", dutyOfficer: "रणजीत मुळीक", dutyMobile: "9970460459", landline: "02118246233", secret: "नाना वामन वीर हुद्दा-श्रेणी पोलीस उपनिरीक्षक ", secretMobile: "8668767711",email: "apibhigvan.pnr@mahapolice.gov.in" },
+  { station: "सुपा", inCharge: "सपोनि. मनोज नवसरे", inChargeContact: "9763005100", dutyOfficer: "सचिन कोकणे", dutyMobile: "9830414370", landline: "02112202033", secret: "", secretMobile: "" ,email: "pisupa.pnr@mahapolice.gov.in"},
+  { station: "SDPO दौड", inCharge: "डि.वाय.एस.पी. बापुराव दडस", inChargeContact: "9049664673", dutyOfficer: "सुभाष डोईफोडे", dutyMobile: "8381024079", landline: "02117297477", secret: "", secretMobile: "" ,email: "sdpo.daund@mahapolice.gov.in"},
+  { station: "दौड", inCharge: "पोनि. गोपाळ पवार", inChargeContact: "9821445525", dutyOfficer: "आमिर शेख", dutyMobile: "8888899708", landline: "02117262333", secret: "निखिल बाळासाहेब जाधव  हुद्दा - HC /32", secretMobile: "7720851002" ,email: "pidaund.pnr@mahapolice.gov.in"},
+  { station: "यवत", inCharge: "पोनि. नारायण देशमुख", inChargeContact: "9594336333", dutyOfficer: "शिवम मुळे", dutyMobile: "9860637325", landline: "02119274233", secret: "", secretMobile: "",email: "piyavat.pnr@mahapolice.gov.in" },
+  { station: "उरुळी कांचन", inCharge: "पोनि. शंकर पाटील", inChargeContact: "9372239136", dutyOfficer: "सुवर्णा गायकवाड", dutyMobile: "9922643867", landline: "02026926287", secret: "", secretMobile: "",email: "urulikanchan.pnr@mahapolice.gov.in" },
+  { station: "SDPO शिरूर", inCharge: "डि.वाय.एस.पी. प्रशांत ढोले", inChargeContact: "7045682418", dutyOfficer: "प्रकाश झेंडे", dutyMobile: "7755997386", landline: "", secret: "", secretMobile: "",email: "sdpo-shirur.pnr@mahapolice.gov.in" },
+  { station: "शिरूर", inCharge: "पोनि. संदेश केंजळे", inChargeContact: "9423561101", dutyOfficer: "रविंद्र काळे", dutyMobile: "9960666441", landline: "02138–222139", secret: "", secretMobile: "",email: "pishirur.pnr@mahapolice.gov.in" },
+  { station: "रांजणगाव", inCharge: "पोनि. वाघमोडे", inChargeContact: "9420756782", dutyOfficer: "औटी", dutyMobile: "9922745151", landline: "02138–232139", secret: "ब्रम्हाणंद हनुमंत पोवार हुद्दा - HC /1948", secretMobile: "919823499775",email: "pi.ranjangaon.pnr@mahapolice.gov.in" },
+  { station: "शिक्रापुर", inCharge: "पोनि. गायकवाड", inChargeContact: "9422620175", dutyOfficer: "अमोल दांडगे", dutyMobile: "9552512690", landline: "02137–286333", secret: "", secretMobile: "" ,email: "pishikrapur.pnr@mahapolice.gov.in"},
+  { station: "SDPO भोर", inCharge: "डि.वाय.एस.पी. तानाजी बरडे", inChargeContact: "9028456113", dutyOfficer: "दत्तात्रय खेंगरे", dutyMobile: "9527901668", landline: "02115223180", secret: "", secretMobile: "",email: "sdpobhor@mahapolice.gov.in" },
+  { station: "सासवड", inCharge: "पोनि. अधिकारी", inChargeContact: "9552747480", dutyOfficer: "विकास ओमासे", dutyMobile: "9822581380", landline: "02115222333", secret: "", secretMobile: "" ,email: "pisaswad.pnr@mahapolice.gov.in"},
+  { station: "जेजुरी", inCharge: "सपोनि. दीपक वाकचौर", inChargeContact: "8169837481", dutyOfficer: "शिवाजी काटे", dutyMobile: "8329432267", landline: "02115253129", secret: "", secretMobile: "",email: "pijejuri.pnr@mahapolice.gov.in" },
+  { station: "भोर", inCharge: "पोनि. आण्णा पवार", inChargeContact: "9664904545", dutyOfficer: "धर्मवीर खांडे", dutyMobile: "9011082328", landline: "02113222533", secret: "", secretMobile: "",email: "pibhor.pnr@mahapolice.gov.in" },
+  { station: "राजगड", inCharge: "पोनि. राजेश गवळी", inChargeContact: "7020863550", dutyOfficer: "राजेश घायाळ", dutyMobile: "9860533869", landline: "02113272233", secret: "", secretMobile: "" ,email: "pirajgad.pnr@mahapolice.gov.in"},
+  { station: "SDPO हवेली", inCharge: "डि.वाय.एस.पी. सुनिल पुजारी", inChargeContact: "7385300444", dutyOfficer: "विनोद विलास चौबे", dutyMobile: "8329578282", landline: "", secret: "", secretMobile: "" ,email: "sdpohaveli@mahapolice.gov.in"},
+  { station: "हवेली", inCharge: "पोनि. सचिन वागडे", inChargeContact: "9356553363", dutyOfficer: "सोनाली जाधव", dutyMobile: "7038086654", landline: "02024392733", secret: "", secretMobile: "" ,email: "pihaweli.pnr@mahapolice.gov.in"},
+  { station: "वेल्हा", inCharge: "सपोनि. नितीन खामगळ", inChargeContact: "9881335556", dutyOfficer: "असुंधे", dutyMobile: "8668674047", landline: "02130221233", secret: "", secretMobile: "" ,email: "pivelha.pnr@mahapolice.gov.in"},
+  { station: "पौड", inCharge: "पोनि. गिरी गोसावी", inChargeContact: "9823858100", dutyOfficer: "गणेश पवार", dutyMobile: "8888212831", landline: "02022943233", secret: "", secretMobile: "" ,email: "pipaud.pnr@mahapolice.gov.in"},
+  { station: "लोणावळा शहर", inCharge: "पोनि. रामाधरे", inChargeContact: "7020084080", dutyOfficer: "स्वप्नील पाटील", dutyMobile: "9011686907", landline: "02114–273033", secret: "", secretMobile: "" ,email: ""},
+  { station: "लोणावळा ग्रामीण", inCharge: "पोनि. तायडे", inChargeContact: "9112046999", dutyOfficer: "विजय मुंढे", dutyMobile: "9403217270", landline: "02114273036", secret: " नितीन मधुकर कदम हुद्दा - पो हवा 2086", secretMobile: "9689474848",email: "" },
+  { station: "वडगाव मावळ", inCharge: "पोनि. राजकुमार कदम", inChargeContact: "9011079622", dutyOfficer: "चेतन कुंभार", dutyMobile: "9881811589", landline: "02114235333", secret: "संजय दूंदा सुपे पो हवा 1008", secretMobile: "9011085729",email: "pivadgaonmaval.pnr@mahapolice.gov.in" },
+  { station: "कामशेत", inCharge: "पोनि. रवींद्र पाटील", inChargeContact: "9923407311", dutyOfficer: "नितीन कळसाईत", dutyMobile: "9850259911", landline: "02114262440", secret: "", secretMobile: "" ,email: "pikamshet.pnr@mahapolice.gov.in"},
+  { station: "SDPO खेड", inCharge: "डि.वाय.एस.पी. अमोल मांडवे", inChargeContact: "7972228124", dutyOfficer:"सोमनाथ होले", dutyMobile: "7020894611", landline: "02135222013", secret: "", secretMobile: "",email: "sdpokhed@mahapolice.gov.in" },
+  { station: "खेड", inCharge: "पोनि. चव्हाण", inChargeContact: "9823515911", dutyOfficer: "संतोष घोलप", dutyMobile: "9823577333",landline: "02135222033", secret: "सुनिल भांडे ", secretMobile: "8999158133" ,email: "pikhed.pnr@mahapolice.gov.in"},
+  { station: "मंचर", inCharge: "पोनि. कंकाळ", inChargeContact: "9421435255", dutyOfficer: "विशाल दळवी", dutyMobile: "9561166625" ,landline: "02133223159", secret: "", secretMobile: "",email: "pimanchar.pnr@mahapolice.gov.in"},
+  { station: "पारगाव", inCharge: "सपोनि. गंधारे", inChargeContact: "8888339339", dutyOfficer: "गजानन ढाके", dutyMobile: "9545696670", landline: "02133284355", secret: "संजय यशवंत साळवे हुद्दा - पोलीस शिपाई/2776", secretMobile: "9503880896",email: "pi-pargaon.pnr@mahapolice.gov.in"},
+  { station: "घोडेगाव", inCharge: "सपोनि. सागर पवार", inChargeContact: "9922432517", dutyOfficer: "नलावडे", dutyMobile: "8888050982",landline: "02133244133", secret: " नामदेव नावजी ढेंगळे हुद्दा - पोलीस शिपाई/2769", secretMobile: "82752 58162",email: "pighodegaon.pnr@mahapolice.gov.in" },
+  { station: "SDPO जुन्नर", inCharge: "डि.वाय.एस.पी. रविंद्र चौधर", inChargeContact: "9923440100", dutyOfficer: "वैशाली कोणकरी", dutyMobile: "7276296360",landline: "02132223333", secret: "", secretMobile: "",email: "sdpo.junnar@mahapolice.gov.in" },
+  { station: "जुन्नर", inCharge: "पोनि किरण अवचर", inChargeContact: "7588942062", dutyOfficer: "दादा पावडे", dutyMobile: "9404805304",landline: "02132222033", secret: "", secretMobile: "" ,email: "pijunnar.pnr@mahapolice.gov.in"},
+  { station: "नारायणगाव", inCharge: "सपोनि. शेलार", inChargeContact: "9766040980", dutyOfficer: "गोरक्ष हासे", dutyMobile: "9604695677",landline: "02132242033", secret: "दत्तात्रय सोपान ढेंबरे हुद्दा - पो.कॉ1388", secretMobile: "7350345207",email: "pinarayangaon.pnr@mahapolice.gov.in" },
+  { station: "आळेफाटा", inCharge: "पोनि विश्वास जाधव", inChargeContact: "8693067666", dutyOfficer: "पोपट कोकाटे", dutyMobile: "8975636567",landline: "02132263033", secret: "विनोद बाळासाहेब गायकवाड हुद्दा HC/1868", secretMobile: "9881492208",email: "pialephata.pnr@mahapolice.gov.in" },
+  { station: "ओतुर", inCharge: "सपोनि. ताटे", inChargeContact: "8652131732", dutyOfficer: "जोतीराम पवार", dutyMobile: "8308345782",landline: "02132264250", secret: "रोहित किसन बोंबले हुद्दा - पोलीस शिपाई/1113", secretMobile: "8888739353",email: "piotur.pnr@mahapolice.gov.in" },
+  { station: "जिल्हा विशेष शाखा", inCharge: "पोनि प्रविण मोरे", inChargeContact: "7020648729", dutyOfficer: "पल्लवी गायकवाड", dutyMobile: "9881027733",landline: "", secret: "", secretMobile: "" ,email: "pisdsb.pnr@mahapolice.gov.in"},
+  { station: "अप्पर पोलीस अधीक्षक रीहर", inCharge: "सपोनि शेवते", inChargeContact: "9421868201", dutyOfficer: "गणेश ठोसर", dutyMobile: "9764355657",landline: "", secret: "", secretMobile: "" ,email: ""},
+  { station: "सुरक्षा शाखा", inCharge: "पोनि मेश्राम", inChargeContact: "7350909060", dutyOfficer: "सुनीता मोरे", dutyMobile: "9503091298" ,landline: "", secret: "", secretMobile: "",email: "surakshabranchr007@gmail.com"},
+  { station: "FRO", inCharge: "पो नि अभिजीत देशमुख", inChargeContact: "9923439797", dutyOfficer: "शिल्पा शिंदे", dutyMobile: "7775098222" ,landline: "", secret: "", secretMobile: "",email: "sp.fro‑pune@nic.in"},
+  { station: "पो अधिक्षक वाचक", inCharge: "सपोनि आकाश पवार", inChargeContact: "9764223226", dutyOfficer: "असीम बेग", dutyMobile: "8087011618",landline: "Not Availavle" ,email: ""},
+  { station: "स्था.गु.शा.", inCharge: "पो नि अविनाश शिळीमकर", inChargeContact: "9923214500", dutyOfficer: "पासलकर", dutyMobile: "9923203187" ,landline: "", secret: "", secretMobile: "",email: "localcrimebranch.pnr@mahapolice.gov.in"},
+  { station: "महिला कक्ष", inCharge: "म पो स ई अनुराधा पाटील", inChargeContact: "8850461312", dutyOfficer: "सीमा जगताप", dutyMobile: "8208002037" ,landline: "", secret: "", secretMobile: "",email: ""},
+  { station: "AHTU", inCharge: "पोनि तासगावकर", inChargeContact: "9545516008", dutyOfficer: "ज्योती भांबळे", dutyMobile: "7447430784",landline: "", secret: "", secretMobile: "" ,email: ""},
+  { station: "आ.गु.शा.", inCharge: "डि.वाय.एस.पी. राजेंद्र मायने", inChargeContact: "9923172100", dutyOfficer: "वर्षा धुमाळ", dutyMobile: "9923421599",landline: "", secret: "", secretMobile: "",email: "" },
+  { station: "सायबर सेल", inCharge: "पोनि तावस्कर", inChargeContact: "9823512278", dutyOfficer: "संतोष देवाडे", dutyMobile: "9823153323",landline: "", secret: "", secretMobile: "",email: "cybercell.pnr@mahapolice.gov.in" },
+  { station: "कल्याण शाखा", inCharge: "पोनि नवनाथ मदने", inChargeContact: "8975997171", dutyOfficer: "प्रवीण मुंढे", dutyMobile: "9923294794",landline: "", secret: "", secretMobile: "",email: "pikalyan.pnr@mahapolice.gov.in" },
+  { station: "TMC", inCharge: "पोनि घोळवे", inChargeContact: "8888854611", dutyOfficer: "विकास सोनवणे", dutyMobile: "9822747966",landline: "", secret: "", secretMobile: "",email: "" },
+  { station: "मुख्यालय", inCharge: "रा.पो.नि कोळी", inChargeContact: "9594123492", dutyOfficer: "राजू दुर्गृळे", dutyMobile: "7758908290" ,landline: "", secret: "", secretMobile: "",email: ""},
+  { station: "बी.डी.डी.एस.", inCharge: "सपोनि साळुंखे", inChargeContact: "7715973907", dutyOfficer: "सतीश गेंगजे", dutyMobile: "7776924209",landline: "", secret: "", secretMobile: "",email: "" },
+  { station: "अर्ज शाखा", inCharge: "पोनि अरूण फुगे", inChargeContact: "9422458455", dutyOfficer: "एस.एस. शेवाळे", dutyMobile: "9561372528",landline: "", secret: "", secretMobile: "" ,email: ""},
+  { station: "मोटार परिवहन विभाग", inCharge: "पो नि पाटील", inChargeContact: "8108970707", dutyOfficer: "मनोज शेडगे", dutyMobile: "9112119889",landline: "", secret: "", secretMobile: "",email: "" },
+  { station: "CCTNS", inCharge: "सपोनि कारंडे", inChargeContact: "8108001981", dutyOfficer: "मनीषा डमरे", dutyMobile: "8888447525",landline: "", secret: "", secretMobile: "" ,email: "cctns.pnr@mahapolice.gov.in"},
+  { station: "वाहतुक विभाग", inCharge: "पोनि संतोष जाधव", inChargeContact: "8879151981", dutyOfficer: "स्वप्नाली पवार", dutyMobile: "9011081035",landline: "", secret: "", secretMobile: "",email: "" },
+  { station: "दहशतवादविरोधी पथक", inCharge: "सपोनि पवार", inChargeContact: "8888855025", dutyOfficer: "विशाल गोरडे", dutyMobile: "8308831928",landline: "", secret: "", secretMobile: "" ,email: "" },  
+    ];
+
+    const tableBody = document.getElementById("stationTableBody");
+    const modal = document.getElementById("popupModal");
+
+    policeStations.forEach((station, index) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${index + 1}</td>
+        <td class="station-name clickable">${station.station}</td>
+        <td>${station.landline || "-"}</td>
+        <td>${station.email ? `<a href="mailto:${station.email}">${station.email}</a>` : "-"}</td>
+      `;
+
+      tr.querySelector(".station-name").addEventListener("click", () => {
+        document.getElementById("modalStation").textContent = station.station || "-";
+        document.getElementById("modalInChargeOfficer").textContent = station.inCharge || "-";
+        document.getElementById("modalInChargeContact").textContent = station.inChargeContact || "-";
+        document.getElementById("modalOfficer").textContent = station.dutyOfficer || "-";
+        document.getElementById("modalMobile").textContent = station.dutyMobile || "-";
+        document.getElementById("modalSecretOfficer").textContent = station.secret || "-";
+        document.getElementById("modalSecretContact").textContent = station.secretMobile || "-";
+
+        const makeButtons = (number) => {
+          if (!number) return "";
+          return `
+            <a href="tel:${number}" class="btn call-btn">Call</a>
+            <a href="https://wa.me/91${number}" target="_blank" class="btn whatsapp-btn">WhatsApp</a>
+          `;
+        };
+
+        document.getElementById("inChargeButtons").innerHTML = makeButtons(station.inChargeContact);
+        document.getElementById("dutyButtons").innerHTML = makeButtons(station.dutyMobile);
+        document.getElementById("secretButtons").innerHTML = makeButtons(station.secretMobile);
+
+        modal.style.display = "block";
+      });
+
+      tableBody.appendChild(tr);
+    });
+
+    document.querySelector(".closeBtn").onclick = () => modal.style.display = "none";
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+  });
+</script>
+
+</body>
+</html>
