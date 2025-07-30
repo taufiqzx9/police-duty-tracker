@@ -30,7 +30,7 @@
     }
 
     .sp-photo {
-      max-width: 250px;
+      max-width: 300px;
       width: 100%;
       height: auto;
       border-radius: 10px;
@@ -72,76 +72,109 @@
       border-radius: 6px;
     }
 
-   .dashboard-box {
-  background-color: rgba(230, 210, 255, 0.95); /* Light Purple */
-  padding: 20px 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  width: 600px;
-  max-width: 90vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    .dashboard-box {
+      background-color: rgba(230, 210, 255, 0.95);
+      padding: 50px 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 750px;
+      max-width: 95vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 24px;
+    }
 
     .dashboard-box h2 {
       color: #003366;
-      font-size: 45px;
+      font-size: 40px;
       margin-bottom: 30px;
       text-align: center;
     }
 
-    .dashboard-box a {
-      display: inline-block;
-      padding: 16px 34px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      font-size: 20px;
-      border-radius: 6px;
-      margin: 10px 0;
-      transition: 0.3s;
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      align-items: center;
     }
 
-    .dashboard-box a:hover {
-      background-color: #0056b3;
+    .dash-btn {
+      display: inline-block;
+      text-align: center;
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .login-btn {
+      background: #003366;
+      color: #ffffff;
+    }
+
+    .login-btn:hover {
+      background: #004080;
+      transform: scale(1.05);
+    }
+
+    .chat-btn {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .chat-btn:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .site-btn {
+      background: #28a745;
+      color: #fff;
+    }
+
+    .site-btn:hover {
+      background: #1e7e34;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
 
-  <div class="officer-row" style="flex-direction: column; align-items: center;">
-  
-  <div class="officer sp-center">
-    <img src="sp2.png" alt="SP Sir Photo" class="sp-photo">
-    <p>श्री. संदीप सिंग गिल<br>पोलीस अधीक्षक, पुणे ग्रामीण</p>
-  </div>
-
-  <!-- Two officers in a row under SP -->
-  <div class="officer-row" style="margin-top: 30px;">
-    <!-- Left Officer -->
-    <div class="officer">
-      <img src="chopde.png" alt="DYSP 1">
-      <p>श्री. रमेश चोपडे<br>अति. पोलीस अधीक्षक (पुणे)</p>
+  <div class="main-container">
+    <!-- SP Sir Photo -->
+    <div class="officer sp-center">
+      <img src="sp2.png" alt="SP Sir Photo" class="sp-photo">
+      <p>श्री. संदीप सिंग गिल<br>पोलीस अधीक्षक, पुणे ग्रामीण</p>
     </div>
 
-    <!-- Right Officer -->
-    <div class="officer">
-      <img src="shinde.png" alt="DYSP 4">
-      <p>श्री. दिलीप शिंदे<br>उप. पोलीस अधीक्षक (गृह)</p>
+    <!-- Two Officers -->
+    <div class="officer-row" style="margin-top: 30px;">
+      <div class="officer">
+        <img src="chopde.png" alt="DYSP 1">
+        <p>श्री. रमेश चोपडे<br>अति. पोलीस अधीक्षक (पुणे)</p>
+      </div>
+      <div class="officer">
+        <img src="shinde.png" alt="DYSP 4">
+        <p>श्री. दिलीप शिंदे<br>उप. पोलीस अधीक्षक (गृह)</p>
+      </div>
     </div>
-  </div>
-</div>
-
 
     <!-- Dashboard Box -->
     <div class="dashboard-box">
       <h2>वन.टच.पीएस मध्ये आपले स्वागत आहे</h2>
-      <a href="tracker.html">🔐 Login</a>
-      <a href="chat.html">👮 ग्रुप चॅटमध्ये जा</a>
-<a href="https://puneruralpolice.gov.in" target="_blank">🌐 पुणे ग्रामीण पोलीस संकेतस्थळ</a>
+      <div class="button-group">
+        <a href="tracker.html" class="dash-btn login-btn">🔐 लॉगिन करा</a>
+        <a href="chat.html" class="dash-btn chat-btn">💬 ग्रुप चॅट</a>
+        <a href="https://puneruralpolice.gov.in" target="_blank" class="dash-btn site-btn">🌐 पुणे ग्रामीण पोलीस संकेतस्थळ</a>
+      </div>
     </div>
-
   </div>
 
 </body>
